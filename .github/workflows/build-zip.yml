@@ -44,6 +44,7 @@ jobs:
           error-severity: 7
           warning-severity: 6
           include-low-severity-errors: true
+          wp-version: 'trunk'
         continue-on-error: true
 
       - name: ZIP plugin
