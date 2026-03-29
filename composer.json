@@ -1,0 +1,28 @@
+{
+    "name": "threadi/encrypt-ai-connector-keys",
+    "version": "1.0.0",
+    "config": {
+      "allow-plugins": {
+        "dealerdirect/phpcodesniffer-composer-installer": true,
+        "phpstan/extension-installer": true
+      },
+      "optimize-autoloader": true,
+      "classmap-authoritative": true,
+      "apcu-autoloader": true,
+      "prepend-autoloader": false,
+      "platform-check": false
+    },
+    "require-dev": {
+      "wp-coding-standards/wpcs": "^3.1.0",
+      "automattic/vipwpcs": "^3.0",
+      "phpstan/phpstan": "^2.1",
+      "szepeviktor/phpstan-wordpress": "^2.0",
+      "phpstan/extension-installer": "^1.4",
+      "php-stubs/wp-cli-stubs": "^2.11",
+      "phpcompatibility/phpcompatibility-wp": "^2.1",
+      "dealerdirect/phpcodesniffer-composer-installer": "^1.2"
+    },
+    "require": {
+        "threadi/crypt-for-wordpress": "^1.1"
+    }
+}

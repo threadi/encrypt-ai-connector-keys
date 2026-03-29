@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "01ebbb9072f32141d55b9608393776f1",
+    "packages": [
+        {
+            "name": "threadi/crypt-for-wordpress",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/threadi/crypt-for-wordpress.git",
+                "reference": "2e8875402866e66c467b9b98e47c8b81e9fa580b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/threadi/crypt-for-wordpress/zipball/2e8875402866e66c467b9b98e47c8b81e9fa580b",
+                "reference": "2e8875402866e66c467b9b98e47c8b81e9fa580b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*"
+            },
+            "require-dev": {
+                "automattic/vipwpcs": "^3.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.2",
+                "php-stubs/wp-cli-stubs": "^2.11",
+                "phpcompatibility/phpcompatibility-wp": "^2.1",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "szepeviktor/phpstan-wordpress": "^2.0",
+                "wp-coding-standards/wpcs": "^3.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CryptForWordPress\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "support": {
+                "issues": "https://github.com/threadi/crypt-for-wordpress/issues",
+                "source": "https://github.com/threadi/crypt-for-wordpress/tree/1.1.0"
+            },
+            "time": "2026-03-28T23:47:34+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
+}

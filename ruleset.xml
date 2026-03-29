@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="EncryptAiConnectorKeys" namespace="EncryptAiConnectorKeys\EncryptAiConnectorKeys" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+
+    <description>Encrypt AI Connector Keys WordPress Coding Standards</description>
+
+    <!--
+        Only scan files with .php extension.
+    -->
+    <arg name="extensions" value="php" />
+
+    <!--
+        Directories to exclude.
+    -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <!-- Use additional rulesets -->
+    <rule ref="WordPress-Docs"/>
+    <rule ref="WordPress-Extra"/>
+    <rule ref="WordPress" />
+</ruleset>
