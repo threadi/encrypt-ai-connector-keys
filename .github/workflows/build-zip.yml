@@ -35,6 +35,20 @@ jobs:
 
       - uses: anchore/sbom-action@v0
 
+      - name: Set version number 1
+        uses: richardrigutins/replace-in-files@v2
+        with:
+          files: 'encrypt-ai-connector-keys.php'
+          search-text: '@@VersionNumber@@'
+          replacement-text: ${{ github.ref_name }}
+
+      - name: Set version number 2
+        uses: richardrigutins/replace-in-files@v2
+        with:
+          files: 'readme.txt'
+          search-text: '@@VersionNumber@@'
+          replacement-text: ${{ github.ref_name }}
+
       - name: Run PCP check
         uses: wordpress/plugin-check-action@v1
         with:

@@ -1,6 +1,6 @@
 === Encrypt AI Connector Keys ===
 Contributors: threadi
-Requires at least: 6.0
+Requires at least: 7.0
 Tested up to: 7.0
 Requires PHP: 8.0
 License: GPL-2.0-or-later
