@@ -34,6 +34,11 @@ require_once __DIR__ . '/settings.php';
  * @return void
  */
 function encrypt_ai_connector_keys_set_callbacks(): void {
+    // bail if wp_get_connectors() does not exist.
+    if( ! function_exists( 'wp_get_connectors' ) ) {
+        return;
+    }
+
 	// check each connector.
 	foreach ( wp_get_connectors() as $connector ) {
 		// bail if setting_name is not set.
