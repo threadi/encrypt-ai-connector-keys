@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Encrypt AI Connector Keys
- * Description:       Do not save your API connector keys unencrypted in your database. Let them encrypt.
+ * Description:       Do not store your API connector keys in plain text in your database. Encrypt them.
  * Requires at least: 7.0
  * Requires PHP:      8.0
  * Version:           @@VersionNumber@@
@@ -63,4 +63,4 @@ function encrypt_ai_connector_keys_set_callbacks(): void {
 		);
 	}
 }
-add_action( 'init', 'encrypt_ai_connector_keys_set_callbacks', 100 );
+add_action( 'init', 'encrypt_ai_connector_keys_set_callbacks', 5 );
