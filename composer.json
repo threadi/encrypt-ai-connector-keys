@@ -1,6 +1,6 @@
 {
     "name": "threadi/encrypt-ai-connector-keys",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "config": {
       "allow-plugins": {
         "dealerdirect/phpcodesniffer-composer-installer": true,
