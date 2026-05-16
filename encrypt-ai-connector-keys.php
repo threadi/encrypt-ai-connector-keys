@@ -27,6 +27,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // include the main file with the crypt loader.
 require_once __DIR__ . '/settings.php';
+require_once __DIR__ . '/class-encrypt-ai-connector-hooks.php';
 
 /**
  * Set the callbacks to encrypt and decrypt the AI keys.
@@ -36,10 +37,10 @@ require_once __DIR__ . '/settings.php';
  * @return void
  */
 function encrypt_ai_connector_keys_set_callbacks(): void {
-    // bail if wp_get_connectors() does not exist.
-    if( ! function_exists( 'wp_get_connectors' ) ) {
-        return;
-    }
+	// bail if wp_get_connectors() does not exist.
+	if ( ! function_exists( 'wp_get_connectors' ) ) {
+		return;
+	}
 
 	// check each connector.
 	foreach ( wp_get_connectors() as $connector ) {
@@ -48,21 +49,78 @@ function encrypt_ai_connector_keys_set_callbacks(): void {
 			continue;
 		}
 
-		// add a filter to decrypt the settings string on reading this option.
-		add_filter(
-			'option_' . $connector['authentication']['setting_name'],
-			static function ( $value ) {
-				return encrypt_ai_connector_keys_get_crypt_method()->decrypt( $value );
-			}
-		);
+		// add the hook to read the value.
+		Encrypt_AI_Connector_Hooks::register_decrypt( $connector );
 
-		// add a filter to encrypt the string during saving it.
-		add_filter(
-			'pre_update_option_' . $connector['authentication']['setting_name'],
-			static function ( $value ) {
-				return encrypt_ai_connector_keys_get_crypt_method()->encrypt( $value );
-			}
-		);
+		// add the hook to write the encrypted value.
+		Encrypt_AI_Connector_Hooks::register_encrypt( $connector );
 	}
 }
 add_action( 'init', 'encrypt_ai_connector_keys_set_callbacks', 15 );
+
+/**
+ * Encrypt existing keys on activation.
+ *
+ * @return void
+ */
+function encrypt_ai_connector_activation(): void {
+	// bail if wp_get_connectors() does not exist.
+	if ( ! function_exists( 'wp_get_connectors' ) ) {
+		return;
+	}
+
+	// check each connector.
+	foreach ( wp_get_connectors() as $connector ) {
+		// bail if "setting_name" is not set.
+		if ( empty( $connector['authentication']['setting_name'] ) ) {
+			continue;
+		}
+
+		// get the actual value.
+		$key = get_option( $connector['authentication']['setting_name'] );
+
+		// bail if no key is set.
+		if ( empty( $key ) ) {
+			continue;
+		}
+
+		// save it encrypted.
+		update_option( $connector['authentication']['setting_name'], encrypt_ai_connector_keys_get_crypt_method()->encrypt( $key ) );
+	}
+}
+register_activation_hook( __FILE__, 'encrypt_ai_connector_activation' );
+
+/**
+ * Decrypt encrypted keys on deactivation.
+ *
+ * @return void
+ */
+function encrypt_ai_connector_deactivation(): void {
+	// bail if wp_get_connectors() does not exist.
+	if ( ! function_exists( 'wp_get_connectors' ) ) {
+		return;
+	}
+
+	// remove all hooks.
+	Encrypt_AI_Connector_Hooks::remove_hooks();
+
+	// check each connector.
+	foreach ( wp_get_connectors() as $connector ) {
+		// bail if "setting_name" is not set.
+		if ( empty( $connector['authentication']['setting_name'] ) ) {
+			continue;
+		}
+
+		// get the actual value.
+		$key = get_option( $connector['authentication']['setting_name'] );
+
+		// bail if no key is set.
+		if ( empty( $key ) ) {
+			continue;
+		}
+
+		// save it decrypted.
+		update_option( $connector['authentication']['setting_name'], encrypt_ai_connector_keys_get_crypt_method()->decrypt( $key ) );
+	}
+}
+register_deactivation_hook( __FILE__, 'encrypt_ai_connector_deactivation' );
