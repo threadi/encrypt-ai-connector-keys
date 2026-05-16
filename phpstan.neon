@@ -5,6 +5,7 @@ parameters:
     - "#wp_get_connectors#"
   paths:
     - encrypt-ai-connector-keys.php
+    - class-encrypt-ai-connector-hooks.php
     - settings.php
     - uninstall.php
   scanFiles:
