@@ -5,6 +5,9 @@
  * @package encrypt-ai-connector-keys
  */
 
+// prevent direct access.
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Object to handle the usage of hooks in this plugin.
  */
