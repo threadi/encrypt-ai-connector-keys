@@ -1,6 +1,6 @@
 {
     "name": "threadi/encrypt-ai-connector-keys",
-    "version": "1.1.0",
+    "version": "2.0.1",
     "config": {
       "allow-plugins": {
         "dealerdirect/phpcodesniffer-composer-installer": true,
@@ -23,6 +23,7 @@
       "dealerdirect/phpcodesniffer-composer-installer": "^1.2"
     },
     "require": {
-        "threadi/crypt-for-wordpress": "^1.1"
-    }
+        "threadi/crypt-for-wordpress": "*"
+    },
+    "minimum-stability": "dev"
 }

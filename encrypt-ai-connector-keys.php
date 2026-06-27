@@ -22,12 +22,19 @@ if ( PHP_VERSION_ID < 80000 ) { // @phpstan-ignore if.alwaysFalse,smaller.always
 	return;
 }
 
+// save the plugin.
+const ENCAIKEYS = __FILE__;
+
+// save the version.
+const ENCAIKEYS_VERSION = '@@VersionNumber@@';
+
 // include the autoloader.
 require_once __DIR__ . '/vendor/autoload.php';
 
 // include the main file with the crypt loader.
 require_once __DIR__ . '/settings.php';
 require_once __DIR__ . '/class-encrypt-ai-connector-hooks.php';
+require_once __DIR__ . '/class-encrypt-ai-updates.php';
 
 /**
  * Set the callbacks to encrypt and decrypt the AI keys.
@@ -55,6 +62,9 @@ function encrypt_ai_connector_keys_set_callbacks(): void {
 		// add the hook to write the encrypted value.
 		Encrypt_AI_Connector_Hooks::register_encrypt( $connector );
 	}
+
+	// initialize the update check.
+	Encrypt_Ai_Updates::get_instance()->init();
 }
 add_action( 'init', 'encrypt_ai_connector_keys_set_callbacks', 15 );
 
