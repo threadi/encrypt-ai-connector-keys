@@ -6,6 +6,7 @@ parameters:
   paths:
     - encrypt-ai-connector-keys.php
     - class-encrypt-ai-connector-hooks.php
+    - class-encrypt-ai-updates.php
     - settings.php
     - uninstall.php
   scanFiles:
