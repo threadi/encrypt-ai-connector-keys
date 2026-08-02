@@ -3,7 +3,7 @@
  * Plugin Name:       Encrypt AI Connector Keys
  * Description:       Do not store your API connector keys in plain text in your database. Encrypt them.
  * Requires at least: 7.0
- * Requires PHP:      8.0
+ * Requires PHP:      8.2
  * Version:           @@VersionNumber@@
  * Author:            Thomas Zwirner
  * Author URI:        https://www.thomaszwirner.de
@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // do nothing if PHP-version is not 8.0 or newer.
-if ( PHP_VERSION_ID < 80000 ) { // @phpstan-ignore if.alwaysFalse,smaller.alwaysFalse
+if ( PHP_VERSION_ID < 80200 ) { // @phpstan-ignore if.alwaysFalse,smaller.alwaysFalse
 	return;
 }
 
