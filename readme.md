@@ -32,3 +32,5 @@ The possible configurations are described here: https://github.com/threadi/crypt
 ## Alternatives
 
 The WordPress AI Client also includes an option to store API keys more securely. This can be done by using environment variables in the hosting environment. The key is stored in a hosting setting and then read by WordPress. The downside is that not all hosting providers support this, and it can be difficult for regular users to implement.
+
+Or check the Secrets API: https://github.com/ericmann/secrets-api (also supported by crypt-for-wordpress)
